@@ -12,7 +12,8 @@ function stepBubble(arr) {
         changed = false;
       }
     }
-    returnArr.push(arr.slice(0));
+    // in order to create a new string and avoid create by reference.
+    returnArr.push(arr.concat());
   }
   return returnArr;
 }
