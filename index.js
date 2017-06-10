@@ -1,24 +1,20 @@
 function stepBubble(arr) {
   let returnArr = [];
-  var changed = true;
+  var changed = false;
   for (var i = 0; i < arr.length; i++) {
-    if (!changed) {
+    if (changed) {
       return returnArr;
     }
-    [arr, changed] = stepBubbleInnerLoop(arr, returnArr, changed);
+    changed = true;
+    for (var j = 0; j < arr.length; j++) {
+      if (arr[j] > arr[j + 1]) {
+        [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
+        changed = false;
+      }
+    }
+    returnArr.push(arr.slice(0));
   }
   return returnArr;
-}
-
-function stepBubbleInnerLoop(arr, returnArr, changed = false) {
-  for (var j = 0; j < arr.length; j++) {
-    if (arr[j] > arr[j + 1]) {
-      [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]]
-      changed = true;
-    }
-  }
-  returnArr[j] = arr;
-  return [arr, changed]
 }
 
 function randomArr(len) {
@@ -34,4 +30,6 @@ function randomArr(len) {
   return arr
 }
 
-stepBubble(randomArr(20));
+let what = stepBubble(randomArr(20));
+
+console.log(what);
