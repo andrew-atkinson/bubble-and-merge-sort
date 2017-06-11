@@ -19,11 +19,9 @@ function stepBubble(arr) {
   return returnArr;
 }
 
-
 function mergeSort(arr) {
-  // halve arr
   if (arr.length < 2) return arr;
-
+  // halve arr
   let l = arr.slice(0, Math.floor(arr.length / 2));
   let r = arr.slice(Math.floor(arr.length / 2), arr.length);
   // then merge pairs (once pair base is met)
@@ -32,8 +30,7 @@ function mergeSort(arr) {
 
 function merge(l, r) {
   let result = [];
-
-  // where's still left or right left
+  // where's still left AND right left......
   while (l.length && r.length) {
     // if the left is lower than right, push it on the RESULT.
     if (l[0] < r[0]) {
@@ -42,14 +39,9 @@ function merge(l, r) {
       result.push(r.shift());
     }
   }
+  // if no left or right, just concat (concat either nothing or the already sorted higher values)
   return result.concat(l).concat(r);
 }
-
-let arr = randomArr(100);
-console.log('original: ' + arr);
-console.log('logged: ' + mergeSort(arr));
-console.log(stepBubble(randomArr(20)));
-
 
 function randomArr(len) {
   let arr = [];
@@ -63,3 +55,9 @@ function randomArr(len) {
   }
   return arr
 }
+
+
+let arr = randomArr(100);
+console.log('original: ' + arr);
+console.log('logged: ' + mergeSort(arr));
+console.log(stepBubble(randomArr(20)));
